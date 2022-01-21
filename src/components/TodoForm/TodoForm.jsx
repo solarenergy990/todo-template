@@ -13,7 +13,9 @@ const TodoForm = ({ onSubmit }) => {
   const onHandleSubmit = evt => {
     evt.preventDefault();
 
-    return onSubmit({ formState });
+    onSubmit({ formState });
+
+    setFormState('');
   };
 
   return (
@@ -25,6 +27,7 @@ const TodoForm = ({ onSubmit }) => {
               type="text"
               placeholder="Enter todo"
               onChange={onHandleChange}
+              value={formState}
             />
           </div>
 
