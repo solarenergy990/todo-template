@@ -22,20 +22,9 @@ function App() {
     });
   };
 
-  // const completeTodo = todoId => {
-  //   const todoToComplete = todoList.find(todo => todoId === todo.id);
-
-  //   if (!todoToComplete.done) {
-  //     todoToComplete.done = true;
-  //     console.log(todoList);
-  //   } else {
-  //     todoToComplete.done = false;
-  //   }
-
-  //   setTodoList(prevTodoList => {
-  //     return [...prevTodoList];
-  //   });
-  // };
+  const closeTodo = todoId => {
+    setTodoList(todoList.filter(todo => todoId !== todo.id));
+  };
 
   return (
     <div>
@@ -43,7 +32,7 @@ function App() {
         <TodoForm onSubmit={addTodo} />
       </Container>
       <Container>
-        <TodoList list={todoList} />
+        <TodoList list={todoList} onCloseTodo={closeTodo} />
       </Container>
     </div>
   );

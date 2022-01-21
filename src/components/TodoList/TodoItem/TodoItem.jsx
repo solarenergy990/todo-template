@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import s from './TodoItem.module.css';
 
-import { Button, Card, Form } from 'react-bootstrap';
+import { Card, Form } from 'react-bootstrap';
 
-const TodoItem = ({ todoItem }) => {
+const TodoItem = ({ todoItem, onClickCloseButton }) => {
   const [activeCheck, setActiveCheck] = useState(false);
   console.log(activeCheck);
 
@@ -29,7 +29,12 @@ const TodoItem = ({ todoItem }) => {
             />
 
             {todoItem}
-            <button type="button" className={s.close} aria-label="Close">
+            <button
+              type="button"
+              className={s.close}
+              aria-label="Close"
+              onClick={onClickCloseButton}
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>

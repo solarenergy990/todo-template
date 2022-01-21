@@ -2,7 +2,7 @@ import React from 'react';
 import TodoItem from './TodoItem/TodoItem';
 import s from './TodoList.module.css';
 
-const TodoList = ({ list }) => {
+const TodoList = ({ list, onCloseTodo }) => {
   console.log('list of todos given by a prop:', list);
   return (
     <div>
@@ -11,7 +11,10 @@ const TodoList = ({ list }) => {
           const { id, todo } = item;
           return (
             <li key={id}>
-              <TodoItem todoItem={todo} />
+              <TodoItem
+                todoItem={todo}
+                onClickCloseButton={() => onCloseTodo(id)}
+              />
             </li>
           );
         })}
