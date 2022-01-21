@@ -1,40 +1,40 @@
 import React, { useState } from 'react';
 import s from './Form.module.css';
 
-const Form = ({ onSetList }) => {
+import { Button, Form } from 'react-bootstrap';
+
+const TodoForm = ({ onSubmit }) => {
   const [formState, setFormState] = useState(null);
 
   const onHandleChange = evt => {
-    // console.log(evt.target.value);
     setFormState(evt.target.value);
   };
 
   const onHandleSubmit = evt => {
     evt.preventDefault();
 
-    return onSetList();
+    return onSubmit({ formState });
   };
 
   return (
-    <div>
-      <form className={s.form} onSubmit={onHandleSubmit}>
+    <div className={s.form}>
+      <Form onSubmit={onHandleSubmit}>
         <div className={s.group}>
           <div className={s.input}>
-            <input
+            <Form.Control
               type="text"
-              className="form-control "
-              id="formGroupExampleInput"
-              placeholder="Example input"
+              placeholder="Enter todo"
               onChange={onHandleChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+
+          <Button variant="primary" type="submit">
             Add Todo
-          </button>
+          </Button>
         </div>
-      </form>
+      </Form>
     </div>
   );
 };
 
-export default Form;
+export default TodoForm;
